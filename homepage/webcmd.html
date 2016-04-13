@@ -1,0 +1,32 @@
+<html>
+
+<script src="webcmd.js"></script>
+<script>
+	function f()
+	{
+		document.getElementById("line").focus();
+		document.getElementById("help").innerHTML = helptext();
+	}
+</script>
+
+<body onload="f();">
+<center>
+<form onSubmit="return runcmd(this.line.value);">
+	<nobr>
+	<input style="font-family: monospace" id="line"
+	       type="text" name="cmd" size="80">
+	</nobr>
+</form>
+</center>
+
+<font color=#cc0000><b><span id=error></span></b></font>
+<br>
+<b><span id=output></span></b>
+<br>
+
+<center>
+<p id=help></p>
+</center>
+</body>
+
+</html>

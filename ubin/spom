@@ -1,0 +1,13 @@
+#!/bin/sh
+
+while true
+do
+	sleep 1500 && notify-send "break"
+	sleep 300 && notify-send "back to work"
+	sleep 1500 && notify-send "break"
+	sleep 300 && notify-send "back to work"
+	sleep 1500 && notify-send "break"
+	sleep 300 && notify-send "back to work"
+	sleep 1500 && notify-send "long break"
+	sleep 900 && notify-send "back to work"
+done

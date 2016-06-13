@@ -1,12 +1,12 @@
 #!/usr/bin/env rc  
 
-# Append to each line
+# Enclose each line
 
 if(~ $#* 0)
-	what=','
+	what='"'
 if not {
 	what=$1
 	shift
 }
 
-sed 's/$/'$what'/' $*
+aq $what | q $what

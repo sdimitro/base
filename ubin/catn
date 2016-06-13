@@ -1,5 +1,7 @@
 #!/usr/bin/env rc  
 
+# Output text with line numbers
+
 switch($#*) {
 case 0
 	awk '{printf("%-5d %s\n",NR,$0)}'

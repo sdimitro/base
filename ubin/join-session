@@ -1,0 +1,2 @@
+#!/bin/sh
+tmux -S /tmp/tmux-session-$1 attach -t $1

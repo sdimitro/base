@@ -1,0 +1,2 @@
+#!/bin/sh
+vim $(find . -name $1)

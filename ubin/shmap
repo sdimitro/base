@@ -1,0 +1,3 @@
+#!/bin/bash
+
+for f in *; do eval $1; done

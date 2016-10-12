@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo '::spa -v ! grep indirect | wc -l' | sudo mdb -k

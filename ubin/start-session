@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "send this to other participants:"
+echo "tmux -S /tmp/tmux-session-$1 attach -t $1"
+sleep 5
+tmux -S /tmp/tmux-session-$1 new -s $1
+

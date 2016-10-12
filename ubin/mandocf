@@ -1,0 +1,2 @@
+#!/bin/sh
+mandoc $(find . -name $1) | less

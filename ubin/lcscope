@@ -1,0 +1,14 @@
+#!/bin/sh
+
+INTRO="\n 0 Find this C symbol:\
+\n 1 Find this function definition:\
+\n 2 Find functions called by this function:\
+\n 3 Find functions calling this function:\
+\n 4 Find this text string:\
+\n 5 Change this text string:\
+\n 6 Find this egrep pattern:\
+\n 7 Find this file:\
+\n 8 Find files #including this file:\n"
+
+echo ${INTRO}
+cscope -dl

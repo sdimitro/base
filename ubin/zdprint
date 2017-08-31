@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo dtrace -n 'zfs-dprintf{printf("%s: %s: %d: %s", stringof(arg0), stringof(arg1), arg2, stringof(arg3))}'

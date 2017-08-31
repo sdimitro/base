@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "
+x86_64 calling convention:
+arguments are passed in %rdi %rsi %rdx %rcx %r8 %r9
+return value is in %rax
+
+x86_32 calling convention:
+arguments are passed on the stack (first arg is pushed last)
+return value is in %eax
+
+to nop out function:
+<func>/vc3
+
+to nop out instruction:
+addr/v90
+"

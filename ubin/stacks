@@ -1,0 +1,61 @@
+#!/usr/bin/python
+
+from glob import glob
+from collections import defaultdict
+from argparse import ArgumentParser
+from re import compile
+
+#
+# Poor man's ::stacks dcmd for live Linux systems.
+# 
+# Note that in order for this to work, the live kernel
+# needs to have been build with the CONFIG_STACKTRACE
+# config option set.
+#
+
+parser = ArgumentParser(prog="stacks",
+        description="print all stacks from /proc")
+parser.add_argument("-a", "--all",
+        help="print output uncondensed", action="store_true")
+parser.add_argument("-c", "--count",
+        help="print number of occurences", action="store_true")
+parser.add_argument("-r", "--regex",
+        help="print stacks matching regex")
+args = parser.parse_args()
+
+stackfiles = glob('/proc/*/stack')
+
+if args.regex:
+    print args.regex
+    r = compile(args.regex)
+
+if args.all:
+    for path in stackfiles:
+        with open(path) as f:
+            stack = f.read()
+        if args.regex and not r.search(stack):
+            continue
+        print path
+        print stack
+    exit(0)
+
+stacklist = []
+for path in stackfiles:
+    with open(path) as f:
+        pid = path.split("/")[2]
+        stacklist.append((f.read(), pid))
+
+stackdict = defaultdict(list)
+for k, v in stacklist:
+    stackdict[k].append(v)
+
+for k, v in stackdict.items():
+    if args.regex and not r.search(k):
+        continue
+    if args.count:
+        print k, len(v)
+        print ""
+    else:
+        print k, v
+        print ""
+
